@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>HTML CANVAS GAME BOI</title>
+<title>HTML CANVAS BASIC GAME BOI</title>
 <style>
 *{
 margin:0;
@@ -15,7 +15,7 @@ box-sizing:border-box;
 div#mainBox{
 margin:0;padding:0;
 width:100vw;height:100vh;
-/* background-color:#0D0C1E; */
+background-color:#0D0C1E;
 }
 canvas{
 position:absolute;
@@ -46,7 +46,7 @@ cvs.height=mainH;
 let msg=''
 
 
-
+//random number gen
 function r(min,max){
 return Math.floor(Math.random() * (max-min) + min)
 }
@@ -56,7 +56,7 @@ function texts(text){
 ctx.fillText(`${text}`,90,30)
 }
 
-
+//IScollision system
 function IScollision(ObjectA,ObjectB){
 return (ObjectA.x + ObjectA.width >= ObjectB.x &&
 ObjectA.x <= ObjectB.x + ObjectB.width &&
@@ -87,7 +87,7 @@ let boxBs=[]
 let boxA=new Box(10,10,'red')
 let boxB=new Box(mainW/3,mainH/2,'blue')
 
-
+// enemis spawning
 function spawnEnemis(){
 let r1,r2,c=1;
 for(let i=0;i<20;i++){
@@ -108,7 +108,10 @@ X = e.pageX
 Y = e.pageY
 })
 
-
+cvs.addEventListener('mousemove', (e)=>{
+X = e.pageX
+Y = e.pageY
+})
 
 
 console.log(ctx)
@@ -124,7 +127,7 @@ boxA.y = Y
 
 
 if(IScollision(boxA,boxB)){
-texts('hsfui uyfgh itfghj iyggh')
+texts('collision is work spawnEnemis()')
 spawnEnemis()
 }
 
@@ -134,7 +137,7 @@ sbox.update()
 
 
 if(IScollision(boxA,sbox)){
-texts('sbox uyfgh itfghj sbox')
+texts('collision is work enemis distroy')
 boxBs.splice(index, 1)
 }
 
